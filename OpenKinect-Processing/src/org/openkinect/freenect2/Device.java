@@ -83,7 +83,7 @@ public class Device {
 				//Native.register(instance);
 				
 				System.load(path+"libturbojpeg.so");
-		    		System.load(path+"libJNILibfreenect2.so");
+		    		System.load(path+"libfreenect2.so");
 			} catch (IOException e) {
 				throw new AssertionError(e);
 			}
