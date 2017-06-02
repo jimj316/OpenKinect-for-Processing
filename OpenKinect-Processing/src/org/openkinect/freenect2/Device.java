@@ -66,7 +66,29 @@ public class Device {
 		   	
 		    System.load(path+"libturbojpeg.dylib");
 		    System.load(path+"libJNILibfreenect2.dylib");
-		}else{
+		    
+		}
+		else if(osName.indexOf("linux") >= 0){
+			try {
+				System.out.println(arch + " linux");
+				LibraryPath libPath = new LibraryPath();
+
+			    String dirPath = libPath.getDir()+"/v2/linux/";
+			    System.out.println("Found path: " + dirPath);
+			    
+				//NativeLibrary.addSearchPath("freenect", dirPath);
+			
+				//NativeLibrary instance = NativeLibrary.getInstance("freenect");
+				//System.err.println("Loaded " + instance.getName() + " from " + instance.getFile().getCanonicalPath());
+				//Native.register(instance);
+				
+				System.load(path+"libturbojpeg.so");
+		    		System.load(path+"libJNILibfreenect2.so");
+			} catch (IOException e) {
+				throw new AssertionError(e);
+			}
+		}
+		else{
 			System.err.println("not compatible with the current OS or is a 32 bit system");
 		}
     }
